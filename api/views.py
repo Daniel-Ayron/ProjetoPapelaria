@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from .models import Categoria
 from rest_framework.decorators import api_view
+from .serializers import CategoriaSerializer
+from rest_framework.response import Response
 
-@api_view('GET')
+@api_view(['GET']) 
 def listar_categorias(request):
     if request.method == 'GET':
         queryset = Categoria.objects.all()
-        pass
-  
+        serializers = CategoriaSerializer(queryset, many=True)
+        return Response(serializers.data)
