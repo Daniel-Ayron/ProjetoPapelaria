@@ -5,4 +5,4 @@ from .models import Categoria
 class CategoriaSerializer(ModelSerializer):
     class Meta:
         model = Categoria
-        field = '__all__'
+        fields = '__all__'
